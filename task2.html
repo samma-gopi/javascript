@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigating Buttons</title>
+  <style>
+    .container {
+      width: 600px;
+      margin: 0 auto;
+      padding: 50px;
+    }
+
+    .page-1,
+    .page-2,
+    .page-3 {
+      display: inline-block;
+      width: 100px;
+      font-size: 30px;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    .page-active {
+      background-color: #ccc;
+    }
+
+    .button {
+      border: none;
+      background-color: #fff;
+      color: #000;
+      padding: 100px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="page-1 page-active" data-page="1">
+      page 1.
+      <button id="next">Next</button>
+    </div>
+    <div class="page-2" data-page="2">
+      page 2.
+      <button id="next">Next</button>
+    </div>
+    <div class="page-3" data-page="3">
+      page 3.
+      <button id="previous">Previous</button>
+    </div>
+  </div>
+  <script>
+
+    function nextPage() {
+
+      var currentPage = parseInt(document.querySelector(".page-active").dataset.page);
+
+
+      currentPage++;
+
+      var nextPageElement = document.querySelector(`.page-${currentPage}`);
+
+      if (nextPageElement) {
+
+        document.querySelector(".page-active").classList.remove("page-active");
+
+
+        nextPageElement.classList.add("page-active");
+      }
+    }
+
+
+    function previousPage() {
+ 
+      var currentPage = parseInt(document.querySelector(".page-active").dataset.page);
+
+
+      currentPage--;
+
+      
+      var previousPageElement = document.querySelector(`.page-${currentPage}`);
+
+      if (previousPageElement) {
+   
+        document.querySelector(".page-active").classList.remove("page-active");
+
+   
+        previousPageElement.classList.add("page-active");
+      }
+    }
+
+ 
+    window.onload = function () {
+     .=
+      document.getElementById("next").addEventListener("click", nextPage);
+      document.getElementById("previous").addEventListener("click", previousPage);
+    };
+  </script>
+</body>
+</html>
